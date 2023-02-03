@@ -1,0 +1,475 @@
+PROGRAM CONSTRUCTS AND LOOPS:-
+
+1)Check current dirctory is the home directory
+
+[root@localhost ~]# sh dir.sh hello how are you
+/root
+/
+hello how are you
+[root@localhost ~]# pwd
+/root
+
+
+2)Extract date of the week from date command. if the day is monday display monday and so on
+
+
+[root@localhost ~]# vi date.sh 
+
+day=$(date)
+echo "$day"
+if [ '$day' = 'mon' ]
+then
+echo "Monday"
+else
+echo $(date +"%A")
+fi
+
+[root@localhost ~]# sh date.sh
+Mon Apr  4 07:40:44 AM UTC 2022
+Monday
+
+3) show a menu and display content of the entered option
+
+[root@localhost store]# vi menu.sh
+
+#Display content as menu option entereread
+echo "Menu displayed"
+echo "1)"
+echo "2)"
+echo "3)"
+echo "chose option from(1-3)?"
+read n
+case "$n" in
+1)echo "Disk free statistics";;
+2)echo "virtual memory statistics";;
+3)echo "real-time processes ";;
+esac
+ 
+[root@localhost store]# sh menu.sh
+Menu displayed
+1)
+2)
+3)
+chose option from(1-3)?
+3
+real-time processes
+[root@localhost store]# sh menu.sh
+Menu displayed
+1)
+2)
+3)
+chose option from(1-3)?
+1
+Disk free statistics
+[root@localhost store]# sh menu.sh
+Menu displayed
+1)
+2)
+3)
+chose option from(1-3)?
+2
+virtual memory statistics
+[root@localhost store]# vi menu.sh
+
+
+4)Print table using while loop
+
+[root@localhost ~]# vi table.sh 
+
+#print table
+read  n
+i=1
+echo "printed table:"
+while [ $i -le 10 ]
+do
+echo "$n * $i =$((n*i))"
+i=$((i+1))
+done
+
+[root@localhost ~]# sh table.sh
+9
+printed table:
+9 * 1 =9
+9 * 2 =18
+9 * 3 =27
+9 * 4 =36
+9 * 5 =45
+9 * 6 =54
+9 * 7 =63
+9 * 8 =72
+9 * 9 =81
+9 * 10 =90
+
+
+5)Reverse no using while lopp
+
+[root@localhost ~]# vi reverse.sh 
+
+# Reverse a no
+echo "ener a no:"
+read n
+rem=0
+rev=0
+while [ $n -gt 0 ]
+do
+rem=$(($n%10))
+rev=`expr $rev \* 10 + $rem`
+n=$(($n/10))
+done
+echo "the reverse no is :$rev"
+
+[root@localhost ~]# sh reverse.sh
+ener a no:
+789
+the reverse no is :987
+
+
+6)Armstrong no using while loop
+
+[root@localhost ~]# vi armstrong.sh 
+
+#armstrong no
+echo "enter a no:"
+read n
+temp=$n
+sum=0
+while [ $n -gt 0 ]
+do
+rem=$((n%10))
+i=$((rem*rem*rem))
+sum=$((sum + i))
+n=$((n/10))
+done
+echo $sum
+if [ $sum == $temp ]
+then
+echo "armstrong no"
+else
+echo "not a armstrong no"
+fi
+
+[root@localhost ~]# sh armstrong.sh
+enter a no:
+153
+153
+armstrong no
+[root@localhost ~]# sh armstrong.sh
+enter a no:
+789
+1584
+not a armstrong no
+ 
+7,8)creat 200 files using for loop
+
+[root@localhost store]# cd /store
+[root@localhost store]# vi 200files.sh
+
+#creating 200files
+for i in {1..200}
+do
+echo hello > "File${i}.txt"
+done
+
+[root@localhost store]# sh 200files.sh
+[root@localhost store]# ls -l
+[root@localhost store]# ls -l
+total 804
+-rw-r--r-- 1 root root 73 Apr  4 17:46 200files.sh
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File100.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File101.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File102.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File103.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File104.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File105.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File106.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File107.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File108.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File109.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File10.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File110.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File111.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File112.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File113.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File114.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File115.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File116.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File117.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File118.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File119.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File11.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File120.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File121.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File122.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File123.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File124.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File125.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File126.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File127.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File128.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File129.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File12.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File130.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File131.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File132.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File133.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File134.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File135.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File136.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File137.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File138.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File139.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File13.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File140.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File141.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File142.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File143.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File144.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File145.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File146.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File147.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File148.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File149.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File14.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File150.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File151.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File152.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File153.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File154.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File155.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File156.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File157.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File158.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File159.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File15.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File160.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File161.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File162.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File163.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File164.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File165.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File166.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File167.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File168.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File169.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File16.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File170.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File171.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File172.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File173.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File174.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File175.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File176.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File177.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File178.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File179.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File17.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File180.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File181.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File182.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File183.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File184.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File185.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File186.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File187.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File188.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File189.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File18.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File190.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File191.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File192.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File193.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File194.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File195.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File196.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File197.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File198.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File199.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File19.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File1.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File200.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File20.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File21.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File22.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File23.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File24.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File25.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File26.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File27.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File28.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File29.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File2.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File30.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File31.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File32.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File33.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File34.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File35.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File36.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File37.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File38.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File39.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File3.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File40.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File41.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File42.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File43.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File44.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File45.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File46.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File47.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File48.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File49.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File4.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File50.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File51.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File52.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File53.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File54.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File55.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File56.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File57.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File58.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File59.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File5.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File60.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File61.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File62.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File63.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File64.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File65.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File66.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File67.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File68.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File69.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File6.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File70.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File71.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File72.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File73.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File74.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File75.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File76.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File77.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File78.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File79.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File7.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File80.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File81.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File82.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File83.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File84.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File85.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File86.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File87.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File88.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File89.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File8.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File90.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File91.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File92.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File93.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File94.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File95.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File96.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File97.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File98.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File99.txt
+-rw-r--r-- 1 root root  6 Apr  4 17:46 File9.txt
+
+
+9)Count no of files and directories in any given directory 
+
+[root@localhost etc]# vi file_count.sh
+
+#Files and directories
+echo " the no of directories is $(find "$@" -type d |wc -l)
+echo "the no of files is $(find "$@" -type f |wc -l)
+
+[root@localhost etc]# sh file_count.sh
+ the no of directories is 325
+echo the no of files is 903
+
+
+
+10) Arithematic operations as menu using switch case
+[root@localhost store]# vi arithamatic.sh
+
+#Arithematic operations using switch case
+echo "enter two no:"
+read a b
+echo "what do you want in (1-5)?"
+echo "1)Sum"
+echo "2)Sub"
+echo "3)Mul"
+echo "4)Division"
+echo "5)Modulus"
+echo "enter your choice"
+read n
+case "$n" in
+1)echo "The Sum of $a and $b is `expr $a + $b`";;
+2)echo "The sub of $a and $b is `expr $a - $b`";;
+3)echo "The mul of $a and $b is `expr $a \* $b`";;
+4)echo "The division of $a and $b is `expr $a / $b`";;
+5)echo "The Modulus of $a and $b is `expr $a % $b`";;
+esac
+
+[root@localhost store]# sh arithamatic.sh
+enter two no:
+23 45
+what do you want in (1-5)?
+1)Sum
+2)Sub
+3)Mul
+4)Division
+5)Modulus
+enter your choice
+1
+The Sum of 23 and 45 is 68
+
+enter two no:
+67 78
+what do you want in (1-5)?
+1)Sum
+2)Sub
+3)Mul
+4)Division
+5)Modulus
+enter your choice
+2
+The sub of 67 and 78 is -11
+
+enter two no:
+56 98
+what do you want in (1-5)?
+1)Sum
+2)Sub
+3)Mul
+4)Division
+5)Modulus
+enter your choice
+3
+The mul of 56 and 98 is 5488
+
+enter two no:
+80 4
+what do you want in (1-5)?
+1)Sum
+2)Sub
+3)Mul
+4)Division
+5)Modulus
+enter your choice
+4
+The division of 80 and 4 is 20
+
+enter two no:
+60 3
+what do you want in (1-5)?
+1)Sum
+2)Sub
+3)Mul
+4)Division
+5)Modulus
+enter your choice
+5
+The Modulus of 60 and 3 is 0

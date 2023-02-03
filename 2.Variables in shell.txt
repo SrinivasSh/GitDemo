@@ -1,0 +1,30 @@
+Variables in shell:- 
+
+1)Using command line arguments display the content on the screen
+
+[root@localhost ~]# vi vilename1.sh 
+
+# using command line arguments
+echo "the no of valuesis is $#"
+echo $@
+echo $*
+echo $?
+ 
+echo ${2}
+echo $0
+echo $1
+echo $2
+echo $3
+
+[root@localhost ~]# sh vilename1.sh 175 tourists struck after cloudburst 
+
+the no of valuesis is 5
+175 tourists struck after cloudburst
+175 tourists struck after cloudburst
+0
+tourists
+vilename1.sh
+175
+tourists
+struck
+

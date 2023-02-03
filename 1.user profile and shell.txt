@@ -1,0 +1,44 @@
+1A) login shell
+
+[root@localhost ~]# echo $SHELL
+/bin/bash
+
+B)Current directory
+
+[root@localhost ~]# pwd
+/root
+
+c)Home directory
+
+[root@localhost ~]# echo $HOME
+/root
+
+d)CURRENT DATE
+
+
+[root@localhost ~]# date
+Mon Apr  4 10:58:22 PM UTC 2022
+
+
+
+2)SYSTEM VARIABLES:-
+
+[root@localhost ~]# echo $PATH
+/root/.local/bin:/root/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/lo
+cal/bin
+[root@localhost ~]# echo $LOGNAME
+root
+[root@localhost ~]# echo $SHELL
+/bin/bash
+[root@localhost ~]# echo $HOME
+/root
+[root@localhost ~]# echo $PWD
+/root
+[root@localhost ~]# echo $PS1
+[\u@\h \W]\$
+[root@localhost ~]# echo $PS2
+>
+[root@localhost ~]# echo $TERM
+linux
+[root@localhost ~]# echo $MAIL
+/var/spool/mail/root
