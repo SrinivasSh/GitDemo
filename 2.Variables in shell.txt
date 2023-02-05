@@ -26,5 +26,7 @@ tourists
 vilename1.sh
 175
 tourists
-struck
+
+
+this is from american time zone
 
