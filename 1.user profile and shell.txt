@@ -1,7 +1,7 @@
 1A) login shell
 
-[root@localhost ~]# echo $SHELL
-/bin/bash
+[root@localhost ~]# echo $SHELL    # hello 
+/bin/bash                          ## this is the remaining code
 
 B)Current directory
 
