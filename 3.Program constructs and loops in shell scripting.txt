@@ -473,3 +473,12 @@ what do you want in (1-5)?
 enter your choice
 5
 The Modulus of 60 and 3 is 0
+
+
+
+
+*
+**
+***
+****
+*****

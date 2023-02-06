@@ -2,8 +2,8 @@
 
 [root@localhost ~]# echo $SHELL    # hello 
 /bin/bash                          ## this is the remaining code
-
-B)Current directory
+                                   ###hello q12eqwas
+B)Current directory                ####
 
 [root@localhost ~]# pwd
 /root
